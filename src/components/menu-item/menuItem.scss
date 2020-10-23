@@ -69,3 +69,13 @@
     }
   }
 }
+
+@media (max-width: 800px) {
+  .menu-item {
+    min-width: 50%;
+
+    &.large {
+      height: 240px;
+    }
+  }
+}
