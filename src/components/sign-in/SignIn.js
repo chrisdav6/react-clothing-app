@@ -19,8 +19,8 @@ const SignIn = () => {
 
   return (
     <div className='SignIn'>
-      <h2>I already have an account.</h2>
-      <span className='title'>Sign in with your email and password</span>
+      <h2 className='title'>I already have an account.</h2>
+      <span>Sign in with your email and password</span>
 
       <form onSubmit={handleSubmit}>
         <FormInput
@@ -28,7 +28,7 @@ const SignIn = () => {
           name='email'
           value={signIn.email}
           handleChange={handleChange}
-          label='email'
+          label='Email'
           required
         />
         <FormInput
@@ -36,7 +36,7 @@ const SignIn = () => {
           name='password'
           value={signIn.password}
           handleChange={handleChange}
-          label='password'
+          label='Password'
           required
         />
         <div className='buttons'>
