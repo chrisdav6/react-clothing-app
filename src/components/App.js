@@ -4,7 +4,7 @@ import Header from './header/Header';
 import Homepage from '../pages/homepage/Homepage';
 import Shop from '../pages/shop/Shop';
 import SignInAndSignUp from '../pages/sign-in-and-sign-up/SignInAndSignUp';
-import { auth } from '../firebase/firebase.utils';
+import { auth, createUserProfileDocument } from '../firebase/firebase.utils';
 import './app.scss';
 
 const App = () => {
@@ -13,8 +13,21 @@ const App = () => {
   let unsubscribeFromAuth = null;
 
   useEffect(() => {
-    unsubscribeFromAuth = auth.onAuthStateChanged(user => {
-      setCurrentUser(user);
+    unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+      if (userAuth) {
+        const userRef = await createUserProfileDocument(userAuth);
+
+        userRef.onSnapshot(snapshot => {
+          setCurrentUser({
+            currentUser: {
+              id: snapshot.id,
+              ...snapshot.data()
+            }
+          });
+        });
+      }
+
+      setCurrentUser({ currentUser: userAuth });
     });
 
     return () => unsubscribeFromAuth();
