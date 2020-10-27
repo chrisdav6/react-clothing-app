@@ -34,7 +34,7 @@ const App = () => {
 
   return (
     <div className='App'>
-      <Header currentUser={currentUser} />
+      <Header />
       <Switch>
         <Route path='/' exact component={Homepage} />
         <Route path='/shop' component={Shop} />
