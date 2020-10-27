@@ -26,7 +26,6 @@ const App = () => {
           });
         });
       }
-
       setCurrentUser({ currentUser: userAuth });
     });
 
